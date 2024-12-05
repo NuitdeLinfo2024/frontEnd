@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid, Card, CardContent, Button, Box, Paper } from '@mui/material';
+import { Typography, Grid2, Card, CardContent, Button, Box, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
@@ -9,15 +9,18 @@ const Home: React.FC = () => {
         Welcome to the Home Page!
       </Typography>
 
-      <Typography variant="h6" paragraph align="center">
-        This is a simple React SPA template using Material UI with TypeScript.
-        Gogogo the BDC
-        We are the best yes !!
-      </Typography>   
+      <Grid2 container justifyContent="center">
+      {/* Loop 100 times and display the typo */}
+      {[...Array(1000)].map((_, index) => (
+        <Typography key={index} variant="body1">
+          On est les meilleurs
+        </Typography>   
+      ))}
+      </Grid2>
 
       {/* Hero Section */}
-      <Grid container spacing={4} justifyContent="center">
-        <Grid item xs={12} sm={6} md={4}>
+      <Grid2 container spacing={4} justifyContent="center">
+        <Grid2 >
           <Card>
             <CardContent>
               <Typography variant="h5" gutterBottom>
@@ -31,9 +34,9 @@ const Home: React.FC = () => {
               </Button>
             </CardContent>
           </Card>
-        </Grid>
+        </Grid2>
 
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid2 >
           <Card>
             <CardContent>
               <Typography variant="h5" gutterBottom>
@@ -47,9 +50,9 @@ const Home: React.FC = () => {
               </Button>
             </CardContent>
           </Card>
-        </Grid>
+        </Grid2>
 
-        <Grid item xs={12} sm={6} md={4}>
+        <Grid2 >
           <Card>
             <CardContent>
               <Typography variant="h5" gutterBottom>
@@ -63,8 +66,8 @@ const Home: React.FC = () => {
               </Button>
             </CardContent>
           </Card>
-        </Grid>
-      </Grid>
+        </Grid2>
+      </Grid2>
 
       {/* Featured Section */}
       <Box mt={6} textAlign="center">
