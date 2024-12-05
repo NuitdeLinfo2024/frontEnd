@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-
 // Interfaces for weather data are already defined
-interface WeatherData {
+export interface WeatherData {
     coord: {
         lon: number;
         lat: number;
@@ -45,8 +43,6 @@ interface WeatherData {
     name: string;
     cod: number;
 }
-
-
 
 export const fetchWeatherData = async (
     lat: number,
@@ -108,46 +104,4 @@ export const fetchWeatherData = async (
     }
 };
 
-const WeatherController: React.FC<{ lat: number; lon: number }> = ({ lat, lon }) => {
-    const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-    const [loading, setLoading] = useState<boolean>(true);
-    const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const loadWeatherData = async () => {
-            setLoading(true);
-            try {
-                const data = await fetchWeatherData(lat, lon);
-                setWeatherData(data);
-            } catch (err: unknown) {
-                setError(err instanceof Error ? err.message : 'An unexpected error occurred');
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        loadWeatherData();
-    }, [lat, lon]);
-
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
-
-    if (!weatherData) {
-        return <div>No weather data available</div>;
-    }
-
-    return (
-        <div>
-            <h1>Weather in {weatherData.name}</h1>
-            <p>Temperature: {weatherData.main.temp}K</p>
-            <pre>{JSON.stringify(weatherData, null, 2)}</pre>
-        </div>
-    );
-};
-
-export default WeatherController;
+export default fetchWeatherData;

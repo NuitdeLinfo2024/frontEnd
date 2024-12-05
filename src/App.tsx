@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, CssBaseline, Box } from '@mui/material';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
 import About from './components/About';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Parallax from './components/Parallax';
 import WeatherController from './weatherApi/WeatherController';
 
 const App: React.FC = () => {
@@ -14,7 +14,7 @@ const App: React.FC = () => {
       <Container>
         <Box my={4}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Parallax />} />
             <Route path="/about" element={<About />} />
             <Route path="/weather" element={<WeatherController lat={35} lon={139} />} />
           </Routes>
