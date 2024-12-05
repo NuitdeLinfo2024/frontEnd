@@ -5,7 +5,7 @@ import './Parallax.css';
 const Parallax: React.FC = () => {
     const { scrollY } = useScroll();
     const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const maxBoatX = window.innerWidth - 100;
+    const maxBoatX = window.innerWidth - 200;
     const maxIslandX = window.innerWidth - 200;
     const maxSunX = window.innerWidth;
 
@@ -19,7 +19,7 @@ const Parallax: React.FC = () => {
     const textOpacity3 = useTransform(scrollY, [400, 600], [0, 1]); // Opacity of text 3
 
     // Dynamic height and color for the ocean rectangle
-    const oceanHeight = useTransform(scrollY, [600, maxScroll], ['45vh', '100vh']); // Adjust max height as needed
+    const oceanHeight = useTransform(scrollY, [600, maxScroll], ['45vh', '200vh']); // Adjust max height as needed
     const oceanColor = useTransform(scrollY, [600, maxScroll], ['#76b6c4', '#064273']); // Darker ocean color
 
     // Dynamic position for the boat
@@ -102,10 +102,10 @@ const Parallax: React.FC = () => {
             />
 
             {/* Islands and other elements */}
-            <motion.div style={{ position: 'fixed', bottom: whaleY, right: '200px', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("https://www.pngarts.com/files/3/Whale-PNG-Image-Background.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, opacity: whaleOpacity, transform: 'translate(50%, 0)' }} />
-            <motion.div style={{ position: 'fixed', bottom: islandY, right: '1000px', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("/ile2.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, opacity: islandOpacity, transform: 'translate(50%, 0)' }} />
-            <motion.div style={{ position: 'fixed', bottom: '120px', right: '2000px', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("/ile.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, transform: 'translate(50%, 0)' }} />
-            <motion.div style={{ position: 'fixed', bottom: '100px', right: '1200px', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("/volcan2.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, transform: 'translate(50%, 0)' }} />
+            <motion.div style={{ position: 'fixed', bottom: whaleY, right: '30%', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("https://www.pngarts.com/files/3/Whale-PNG-Image-Background.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, opacity: whaleOpacity, transform: 'translate(50%, 0)' }} />
+            <motion.div style={{ position: 'fixed', bottom: islandY, right: '70%', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("/ile2.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, opacity: islandOpacity, transform: 'translate(50%, 0)' }} />
+            <motion.div style={{ position: 'fixed', bottom: '12%', right: '120%', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("/ile.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, transform: 'translate(50%, 0)' }} />
+            <motion.div style={{ position: 'fixed', bottom: '10%', right: '80%', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("/volcan2.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, transform: 'translate(50%, 0)' }} />
 
             {/* Texts */}
             <div style={{ position: 'fixed', top: '25%', left: '40%', transform: 'translate(-50%, -50%)', zIndex: 5 }}>
