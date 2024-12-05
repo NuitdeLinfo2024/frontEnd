@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import './Parallax.css';
 
 const Parallax: React.FC = () => {
     const { scrollY } = useScroll();
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const [maxScroll, setMaxScroll] = useState(0);
+
+    // Ensure maxScroll and viewport dimensions are correctly calculated
+    useEffect(() => {
+        const updateMaxScroll = () => {
+            setMaxScroll(document.body.scrollHeight - window.innerHeight);
+        };
+        updateMaxScroll();
+        window.addEventListener('resize', updateMaxScroll);
+
+        return () => window.removeEventListener('resize', updateMaxScroll);
+    }, []);
+
     const maxBoatX = window.innerWidth - 200;
     const maxIslandX = window.innerWidth - 200;
     const maxSunX = window.innerWidth;
@@ -12,26 +24,26 @@ const Parallax: React.FC = () => {
     const boatX = useTransform(scrollY, [0, maxScroll], [0, maxBoatX]);
     const islandX = useTransform(scrollY, [0, maxScroll], [maxIslandX, 0]);
     const sunX = useTransform(scrollY, [-10000, maxScroll], [maxSunX, 0]);
-    
+
     // Opacities for each text
-    const textOpacity1 = useTransform(scrollY, [0, 200], [1, 0]); // Opacity of text 1
-    const textOpacity2 = useTransform(scrollY, [200, 400], [0, 1]); // Opacity of text 2
-    const textOpacity3 = useTransform(scrollY, [400, 600], [0, 1]); // Opacity of text 3
+    const textOpacity1 = useTransform(scrollY, [0, 200], [1, 0]);
+    const textOpacity2 = useTransform(scrollY, [200, 400], [0, 1]);
+    const textOpacity3 = useTransform(scrollY, [400, 600], [0, 1]);
 
     // Dynamic height and color for the ocean rectangle
-    const oceanHeight = useTransform(scrollY, [600, maxScroll], ['45vh', '200vh']); // Adjust max height as needed
-    const oceanColor = useTransform(scrollY, [600, maxScroll], ['#76b6c4', '#064273']); // Darker ocean color
+    const oceanHeight = useTransform(scrollY, [600, maxScroll], ['45vh', '140vh']);
+    const oceanColor = useTransform(scrollY, [600, maxScroll], ['#76b6c4', '#064273']);
 
     // Dynamic position for the boat
-    const boatY = useTransform(scrollY, [600, maxScroll], ['50%', '-5%']); // Adjust to raise the boat
+    const boatY = useTransform(scrollY, [600, maxScroll], ['50%', '-5%']);
 
     // Dynamic position for the island and whale
-    const islandY = useTransform(scrollY, [600, maxScroll], ['0%', '90%']); // Adjust to raise the island
-    const whaleY = useTransform(scrollY, [600, maxScroll], ['0%', '50%']); // Adjust to raise the whale
+    const islandY = useTransform(scrollY, [600, maxScroll], ['0%', '90%']);
+    const whaleY = useTransform(scrollY, [600, maxScroll], ['0%', '50%']);
 
     // Opacity for the whale and island as they rise
-    const whaleOpacity = useTransform(scrollY, [600, maxScroll], [1, 0]); // Whale opacity fades out
-    const islandOpacity = useTransform(scrollY, [600, maxScroll], [1, 0]); // Island opacity fades out
+    const whaleOpacity = useTransform(scrollY, [600, maxScroll], [1, 0]);
+    const islandOpacity = useTransform(scrollY, [600, maxScroll], [1, 0]);
 
     return (
         <div style={{ height: '200vh', position: 'relative', overflow: 'hidden' }}>
@@ -102,7 +114,40 @@ const Parallax: React.FC = () => {
             />
 
             {/* Islands and other elements */}
-            <motion.div style={{ position: 'fixed', bottom: whaleY, right: '30%', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("https://www.pngarts.com/files/3/Whale-PNG-Image-Background.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, opacity: whaleOpacity, transform: 'translate(50%, 0)' }} />
+            <motion.div
+                style={{
+                    position: 'fixed',
+                    bottom: whaleY,
+                    right: '30%',
+                    x: islandX,
+                    width: '200px',
+                    height: '200px',
+                    backgroundImage: 'url("https://www.pngarts.com/files/3/Whale-PNG-Image-Background.png")',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: 4,
+                    opacity: whaleOpacity,
+                    transform: 'translate(50%, 0)',
+                }}
+            />
+            <motion.div
+                style={{
+                    position: 'fixed',
+                    bottom: islandY,
+                    right: '70%',
+                    x: islandX,
+                    width: '200px',
+                    height: '200px',
+                    backgroundImage: 'url("/ile2.png")',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: 4,
+                    opacity: islandOpacity,
+                    transform: 'translate(50%, 0)',
+                }}
+            />
+
+<motion.div style={{ position: 'fixed', bottom: whaleY, right: '30%', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("https://www.pngarts.com/files/3/Whale-PNG-Image-Background.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, opacity: whaleOpacity, transform: 'translate(50%, 0)' }} />
             <motion.div style={{ position: 'fixed', bottom: islandY, right: '70%', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("/ile2.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, opacity: islandOpacity, transform: 'translate(50%, 0)' }} />
             <motion.div style={{ position: 'fixed', bottom: '12%', right: '120%', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("/ile.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, transform: 'translate(50%, 0)' }} />
             <motion.div style={{ position: 'fixed', bottom: '10%', right: '80%', x: islandX, width: '200px', height: '200px', backgroundImage: 'url("/volcan2.png")', backgroundSize: 'contain', backgroundRepeat: 'no-repeat', zIndex: 4, transform: 'translate(50%, 0)' }} />
@@ -129,6 +174,7 @@ const Parallax: React.FC = () => {
                     Le cœur pompe le sang, grâce à ses contractions régulières, le propulse dans tout l'organisme et assure ainsi l'alimentation en oxygène du corps entier. C’est ce qui maintient le corps vivant en gardant les organes en bonne santé. Les marées ont ce même pouvoir avec la mer. Elles régulent le flux et le reflux de l'eau de mer, influençant l’équilibre des écosystèmes marins. Les courants de marée jouent par ailleurs un rôle global sur le climat en contribuant au mélange vertical de l'océan, qui refroidit la surface par le contact avec l'eau profonde.                     </p>
                 </motion.div>
             </div>
+ 
         </div>
     );
 };
