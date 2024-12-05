@@ -12,6 +12,7 @@ const Home: React.FC = () => {
       <Typography variant="h6" paragraph align="center">
         This is a simple React SPA template using Material UI with TypeScript.
         Gogogo the BDC
+        We are the best yes !!
       </Typography>   
 
       {/* Hero Section */}

@@ -1,16 +1,16 @@
 # Stage 1: Build the application with Vite
-FROM node:18-alpine as build
+FROM node:lts-slim as build
 
 # Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy only package.json and package-lock.json first for dependency caching
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install all dependencies, including devDependencies for the build process
+RUN npm install --legacy-peer-deps && npm cache clean --force
 
-# Copy the rest of the application code
+# Copy the source code (only the necessary files, use .dockerignore to exclude others)
 COPY . .
 
 # Build the application
@@ -19,11 +19,11 @@ RUN npm run build
 # Stage 2: Serve the application with NGINX
 FROM nginx:alpine
 
-# # Copy the built files from the previous stage
+# Copy the build artifacts from the build stage to the NGINX container
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# # Expose port 80
+# Expose port 80 for the web server
 EXPOSE 80
 
-# # Start NGINX
+# Start NGINX in the foreground
 CMD ["nginx", "-g", "daemon off;"]
