@@ -10,8 +10,9 @@ const Home: React.FC = () => {
       </Typography>
 
       <Typography variant="h6" paragraph align="center">
-        This is a simple React SPA template using Material UI with TypeScript. Explore our site to learn more!
-      </Typography>
+        This is a simple React SPA template using Material UI with TypeScript.
+        Gogogo the BDC
+      </Typography>   
 
       {/* Hero Section */}
       <Grid container spacing={4} justifyContent="center">
