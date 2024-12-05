@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import WeatherController from './weatherApi/WeatherController';
 
 const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/weather" element={<WeatherController lat={35} lon={139} />} />
           </Routes>
         </Box>
       </Container>
