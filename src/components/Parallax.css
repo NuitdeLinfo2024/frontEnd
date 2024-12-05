@@ -24,22 +24,22 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 45vh; /* Adjust height */
-    overflow: hidden; /* Hide overflow to keep waves within bounds */
-    z-index: 3;
-  }
-  
-  .svg-wave {
+    height: 50%;
+    overflow: hidden;
+}
+
+.svg-wave {
     position: absolute;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .wave {
-    fill: rgba(255, 255, 255, 0.5); /* Color for the waves */
-    animation: wave-animation 10s linear infinite;
-  }
+    width: 100%;
+    height: auto;
+}
+
+.wave {
+    fill: #0077be;
+    transform: translateY(20%);
+}
+
   
   @keyframes wave-animation {
     0% {
