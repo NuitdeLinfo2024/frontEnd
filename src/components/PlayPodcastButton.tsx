@@ -24,7 +24,7 @@ const PlayPodcastButton: React.FC = () => {
         right: 16,
       }}
     >
-      <audio ref={audioRef} src="./podcast.mp3">
+      <audio ref={audioRef} src="/podcast.mp3" preload="auto">
         <track kind="captions" />
       </audio>
       <IconButton onClick={handlePlayPause} aria-label="play/pause">

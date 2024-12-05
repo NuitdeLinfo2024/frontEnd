@@ -22,6 +22,6 @@ const App: React.FC = () => {
       <PlayPodcastButton />
     </Router>
   );
-};
+}
 
 export default App;
