@@ -3,8 +3,8 @@ import { Container, CssBaseline, Box } from '@mui/material';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
-import PlayPodcastButton from './components/PlayPodcastButton';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PlayPodcastButton from './components/PlayPodcastButton';
 
 const App: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const App: React.FC = () => {
           </Routes>
         </Box>
       </Container>
-      <PlayPodcastButton />
+      <PlayPodcastButton /> {/* Add this line to render the CanvasOverlay */}
     </Router>
   );
 }
