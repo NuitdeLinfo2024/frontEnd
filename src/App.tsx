@@ -3,6 +3,7 @@ import { Container, CssBaseline, Box } from '@mui/material';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import About from './components/About';
+import PlayPodcastButton from './components/PlayPodcastButton';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App: React.FC = () => {
@@ -18,8 +19,9 @@ const App: React.FC = () => {
           </Routes>
         </Box>
       </Container>
+      <PlayPodcastButton />
     </Router>
   );
-}
+};
 
 export default App;
