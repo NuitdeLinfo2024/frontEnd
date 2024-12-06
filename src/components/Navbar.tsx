@@ -62,6 +62,13 @@ const Navbar: React.FC = () => {
                 localStorage.setItem('useVolume', JSON.stringify(!JSON.parse(localStorage.getItem('useVolume') || 'false')));
                 }} />
             </Typography>
+            <Typography >
+              Activer le défi logo <Switch
+              defaultChecked={JSON.parse(localStorage.getItem('useLogo') || 'false')}
+              onClick={() => { 
+                localStorage.setItem('useLogo', JSON.stringify(!JSON.parse(localStorage.getItem('useLogo') || 'false')));
+                }} />
+            </Typography>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} color="primary">
