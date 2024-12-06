@@ -60,6 +60,7 @@ const questions = [
             { label: "Les poissons", isCorrect: true },
             { label: "Les volcans", isCorrect: false },
         ],
+        explication: "Les poissons: Ils transportent les nutriments pour maintenir l'équilibre écologique comme les globules rouges le font pour le corps"
     },
     {
         question: "Les algues dans la mer sont comparables à :",
