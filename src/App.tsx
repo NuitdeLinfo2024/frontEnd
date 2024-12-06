@@ -45,7 +45,7 @@ const App: React.FC = () => {
         <Logo />
       </Container>
       {/* Audio element */}
-      <audio ref={audioRef} src="podcast2.mp3" preload="auto">
+      <audio ref={audioRef} src="podcast.mp3" preload="auto">
         <track kind="captions" src="captions_en.vtt" srcLang="en" label="English" default />
       </audio>
     </Router>
