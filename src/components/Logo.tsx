@@ -120,7 +120,7 @@ const Logo: React.FC = () => {
           className="fade-out-up"
           style={{
             position: 'fixed',
-            top: `${scorePosition.y}%`,
+            top: `${scorePosition.y+5}%`,
             left: `${scorePosition.x}%`,
             transform: 'translate(-50%, -50%)',
             color: 'green',
