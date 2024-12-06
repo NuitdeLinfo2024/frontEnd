@@ -2,16 +2,14 @@ import React, { useState, useEffect } from 'react';
 
 const Logo: React.FC = () => {
   const height = window.innerHeight;
-  const width = window.innerWidth;
-  const [position, setPosition] = useState(height > width ? { x: 10, y: 10 } : { x: 10, y: 5 });
-  
+  const [position, setPosition] = useState({ x: 10, y: 10 });
   const [rotation, setRotation] = useState(35);
   const [showScore, setShowScore] = useState(false);
   const [showBOOM, setShowBOOM] = useState(false);
   const [showCongrats, setShowCongrats] = useState(false);
   const [scorePosition, setScorePosition] = useState({ x: 0, y: 0 });
   const [score, setScore] = useState(0);
-  const imageSize = 10.0 * Math.pow(97.0 / 100.0, score)* height/(2*100);
+  const imageSize = 10.0 * Math.pow(97.0 / 100.0, score) * height / (2 * 100);
   
   function getRandomPositionX() {
     return Math.floor(Math.random() * 90) + 5; // Génère une position aléatoire entre 5% et 95%
