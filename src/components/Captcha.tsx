@@ -27,7 +27,9 @@ const Captcha: React.FC<CaptchaProps> = ({ onComplete }) => {
       )}
       {stage === 1 && <Stage1Form onComplete={() => setStage(2)} />}
       {stage === 2 && <Stage2Interactive onComplete={() => setStage(3)} />}
-      {stage === 3 && <Stage3Platformer onComplete={() => setStage(4)} />}
+      {stage === 3 && <Stage3Platformer onComplete={() => setStage(4)} goBackToStage2={function (): void {
+        throw new Error('Function not implemented.');
+      } } />}
       {stage > 3 && <h1>CAPTCHA Completed! 🎉</h1>}
     </div>
   );
