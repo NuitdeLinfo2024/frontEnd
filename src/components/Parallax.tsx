@@ -7,6 +7,7 @@ const Parallax: React.FC = () => {
     const { scrollY } = useScroll();
     const [maxScroll, setMaxScroll] = useState(0);
     const [showFishAndPlankton, setShowFishAndPlankton] = useState(false);
+    const [showText, setShowText] = useState(false);
 
     useEffect(() => {
         const updateMaxScroll = () => {
@@ -21,10 +22,20 @@ const Parallax: React.FC = () => {
     useEffect(() => {
         // Show fish and plankton at the end of the scroll
         const handleScroll = () => {
-            if (scrollY.get() >= maxScroll -30) { // Adjust threshold as needed
-                setShowFishAndPlankton(true);
-            } else {
+            if(scrollY.get() <= maxScroll -2500){
                 setShowFishAndPlankton(false);
+                setShowText(true);
+
+            }
+            else if (scrollY.get() >= maxScroll -2500 && scrollY.get() <= maxScroll -1500) { // Adjust threshold as needed
+                setShowFishAndPlankton(true);
+                setShowText(true);
+                textOpacity4.set(0);
+
+            } else if(scrollY.get() >= maxScroll ) {
+                setShowFishAndPlankton(false);
+                setShowText(true);
+
             }
         };
         
@@ -40,22 +51,21 @@ const Parallax: React.FC = () => {
     const boatX = useTransform(scrollY, [0, maxScroll], [0, maxBoatX * scrollFactor]);
     const islandX = useTransform(scrollY, [0, maxScroll], [maxIslandX * scrollFactor, 0]);
     const sunX = useTransform(scrollY, [-10000, maxScroll], [maxSunX * scrollFactor, 0]);
-
-    const textOpacity1 = useTransform(scrollY, [0, 400 * scrollFactor, 800 * scrollFactor,2000*scrollFactor], [1, 0, 0,0]);
-    const textOpacity2 = useTransform(scrollY, [400 * scrollFactor, 700 * scrollFactor, 1100 * scrollFactor,2000*scrollFactor], [0, 1, 0,0]);
-    const textOpacity3 = useTransform(scrollY, [800 * scrollFactor, 900 * scrollFactor, 1500 * scrollFactor,1700*scrollFactor], [0, 0, 1,0]);
-    const textOpacity4 = useTransform(scrollY, [800 * scrollFactor, 900 * scrollFactor, 1500 * scrollFactor,2000*scrollFactor], [0, 0, 0,1]);
-
+    const textOpacity1 = useTransform(scrollY, [0, 700 * scrollFactor, 1500 * scrollFactor], [1, 1, 0]);
+    const textOpacity2 = useTransform(scrollY, [1500 * scrollFactor, 2400 * scrollFactor, 3200 * scrollFactor], [0, 1, 0]);
+    const textOpacity3 = useTransform(scrollY, [3200 * scrollFactor, 4100 * scrollFactor, 4900 * scrollFactor], [0, 1, 0]);
+    const textOpacity4 = useTransform(scrollY, [4900 * scrollFactor, 5800 * scrollFactor, 6600 * scrollFactor], [0, 1, 0]);
+    const textOpacity5 = useTransform(scrollY, [6600 * scrollFactor, 7500 * scrollFactor, 8300 * scrollFactor], [0, 1, 0]);
     const oceanHeight = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['45vh', '140vh']);
     const oceanColor = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['#76b6c4', '#064273']);
     const boatY = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['50%', '-42%']);
-    const islandY = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['0%', '90%']);
-    const whaleY = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['0%', '50%']);
+    const islandY = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['0%', '120%']);
+    const whaleY = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['0%', '90%']);
     const whaleOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
     const islandOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
 
     return (
-     <div style={{ height: '500vh', position: 'relative', overflow: 'hidden' }}>
+     <div style={{ height: '700vh', position: 'relative', overflow: 'hidden' }}>
             {/* Sky background gradient */}
             <div style={{
                 position: 'fixed',
@@ -186,8 +196,9 @@ const Parallax: React.FC = () => {
             </div>
                         
             {/* Fish and Plankton Display */}
-            {showFishAndPlankton && (
+            
                 <div className="fish-and-plankton" style={{
+                    
                     zIndex:20,
                     position: 'fixed',
                     width: '100%',
@@ -195,29 +206,51 @@ const Parallax: React.FC = () => {
                     top: 0,
                     left: 0,
                 }}>
-                                            <motion.img src="./plancton.png" alt="Fish" style={{  position: 'fixed', width: '100px' , top:'60%',left:'10%'}} />
-                        <motion.img src="./fish.png" alt="Plankton" style={{position: 'fixed', width: '100px', top:'90%',left:'40%' }} />
-                        <motion.img src="./fish2.png" alt="Plankton" style={{ position: 'fixed', top:'50%', left:'50%',width: '100px',}} />
-                        <motion.img src="./jellyfish.png" alt="Jellyfish" style={{ position: 'fixed', top:'60%', left:'30%',width: '100px',}} />
+                                            <motion.img src="./plancton.png" alt="Fish" style={{opacity:textOpacity4,  position: 'fixed', width: '100px' , top:'60%',left:'10%'}} />
+                        <motion.img src="./fish.png" alt="Plankton" style={{opacity:textOpacity4, position: 'fixed', width: '100px', top:'90%',left:'40%' }} />
+                        <motion.img src="./fish2.png" alt="Plankton" style={{opacity:textOpacity4,  position: 'fixed', top:'50%', left:'50%',width: '100px',}} />
+                        <motion.img src="./jellyfish.png" alt="Jellyfish" style={{opacity:textOpacity4,  position: 'fixed', top:'60%', left:'30%',width: '100px',}} />
 
-                        <motion.img src="./fish.png" alt="Fish" style={{  position: 'fixed', width: '100px' , top:'40%',left:'10%'}} />
-                        <motion.img src="./plancton.png" alt="Plankton" style={{position: 'fixed', width: '100px', top:'20%',left:'90%' }} />
-                        <motion.img src="./fish2.png" alt="Plankton" style={{ position: 'fixed', top:'80%', left:'90%',width: '100px',}} />
-                        <motion.img src="./jellyfish.png" alt="Jellyfish" style={{ position: 'fixed', top:'60%', left:'70%',width: '100px',}} />
+                        <motion.img src="./fish.png" alt="Fish" style={{ opacity:textOpacity4,  position: 'fixed', width: '100px' , top:'40%',left:'10%'}} />
+                        <motion.img src="./plancton.png" alt="Plankton" style={{opacity:textOpacity4, position: 'fixed', width: '100px', top:'20%',left:'90%' }} />
+                        <motion.img src="./fish2.png" alt="Plankton" style={{opacity:textOpacity4,  position: 'fixed', top:'80%', left:'90%',width: '100px',}} />
+                        <motion.img src="./jellyfish.png" alt="Jellyfish" style={{opacity:textOpacity4,  position: 'fixed', top:'60%', left:'70%',width: '100px',}} />
 {/* Additional Wave SVGs */}
+               </div>
+
+{showFishAndPlankton && (
+    <div className="fish-and-plankton" style={{}}>
 <Bubble size={50} position={{ top: '60%', left: '10%' }} />
                     <Bubble size={30} position={{ top: '70%', left: '30%' }} />
                     <Bubble size={40} position={{ top: '50%', left: '50%' }} />
                     <Bubble size={60} position={{ top: '40%', left: '80%' }} />
                     <Bubble size={20} position={{ top: '80%', left: '60%' }} />
-
+</div>
+)   
+}
             
-
+            {showText && (
+                <div className="text-container" style={{ top:'25%', color: 'white',position:'fixed' }}>
+                    <motion.div style={{opacity: textOpacity5, top: '55%',}} >
+                        <h1>Poissons </h1>
+                        <p>
+                        Les poissons dans la mer jouent un rôle essentiel. Si nous pouvions les comparer avec un organe dans le corps humain, ça serait les globules rouges. Ils transportent des nutriments, maintiennent l'équilibre écologique et relient différents niveaux de l'écosystème, tout comme les globules rouges transportent l'oxygène et assurent le bon fonctionnement des organes dans le corps.
+                        </p>
+                    </motion.div>
+                    <motion.div style={{opacity: textOpacity5, top: '85%',}} >
+                        <h1>Courant marin  </h1>
+                        <p>
+                        La mer et l’atmosphère sont en continuelle communication. Ensemble, ils constituent une machine thermique naturelle. Ils échangent en permanence du gaz, de l’eau, de la chaleur, que la mer redistribue autour du globe grâce aux courants marins. Cet échange est possible grâce aux courants marins. Ils jouent le même rôle que les veines, qui transportent les nutriments et nourrissent les organes du corps.                        </p>
+                    </motion.div>
+                    <motion.div style={{opacity: textOpacity5}} >
+                    <motion.img src="./fish.png" alt="Fish" style={{ position: 'fixed', width: '100px', top: '80%', left: '10%' }} animate={{ x: window.innerWidth }} transition={{ duration: 10 }} />
+            <motion.img src="./fish.png" alt="Plankton" style={{ position: 'fixed', top: '95%', left: '30%', width: '100px' }} animate={{ x: window.innerWidth }} transition={{ duration: 10}} />
+            <motion.img src="./fish.png" alt="Jellyfish" style={{ position: 'fixed', top: '90%', left: '20%', width: '100px' }} animate={{ x: window.innerWidth }} transition={{ duration: 10}} />
+            </motion.div>
                 </div>
                 
             )}
-
-            </div>
+        </div>
     );
 };
 
