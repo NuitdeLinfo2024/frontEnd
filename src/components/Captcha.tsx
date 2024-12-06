@@ -26,8 +26,8 @@ const Captcha: React.FC<CaptchaProps> = ({ onComplete }) => {
           onSkip={onComplete}
         />
       )}
-      {stage === 1 && <Stage1Form onComplete={() => setStage(4)} />}
-      {stage === 2 && <Stage2Interactive onComplete={() => setStage(4)} />}
+      {stage === 1 && <Stage1Form onComplete={() => setStage(2)} />}
+      {stage === 2 && <Stage2Interactive onComplete={() => setStage(3)} />}
       {stage === 3 && <Stage3Platformer onComplete={() => setStage(4)} />}
       {stage === 4 && <Stage4Password onComplete={() => setStage(5)} />}
       {stage > 4 && <h1>CAPTCHA Completed! 🎉</h1>}
