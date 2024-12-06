@@ -14,7 +14,7 @@ const Logo: React.FC = () => {
     }
 
     function getRandomPositionY() {
-        return Math.floor(Math.random() * 80) + 15; // Génère une position aléatoire entre 10% et 95%
+        return Math.floor(Math.random() * 85) + 10; // Génère une position aléatoire entre 10% et 95%
     }
 
     function getRandomRotation() {
@@ -53,17 +53,19 @@ const Logo: React.FC = () => {
                         left: `${position.x}%`,
                         transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
                         cursor: 'pointer',
-                        zIndex: 10,
+                        pointerEvents: 'auto',
+                        zIndex: 20,
+   
                     }}
                 >
-                    <img src="/LogoLyreco2.png" alt="Logo" style={{ width: `${20.0 * Math.pow(97.0 / 100.0, score)}%`, height: `${10.0 * Math.pow(97.0 / 100.0, score)}%`, opacity: 1 * Math.pow(3.0 / 5.0, score) }} />
+                    <img src="/images/LogoLyreco2.png" alt="Logo" style={{ width: `${20.0 * Math.pow(97.0 / 100.0, score)}%`, height: `${10.0 * Math.pow(97.0 / 100.0, score)}%`, opacity: 1 * Math.pow(3.0 / 5.0, score) }} />
                 </div>
             ) : (
                 showCongrats && (
                     <>
                       {showFireworks && (
                         <img
-                          src="/feuxArtifices.gif"
+                          src="/images/feuxArtifices.gif"
                           alt="Feux d'artifice"
                           style={{
                             position: 'fixed',

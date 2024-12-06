@@ -122,7 +122,7 @@ const Qcm = () => {
             {/* Image de fond */}
             <Box
                 component="img"
-                src="././public/bubbles.png"
+                src="././public/images/bubbles.png"
                 alt="Background"
                 sx={{
                     position: "absolute",
@@ -203,7 +203,7 @@ const Qcm = () => {
                             {score === questions.length && (
                                 <Box
                                     component="img"
-                                    src="././public/crab.png"
+                                    src="././public/images/crab.png"
                                     alt="Félicitations !!"
                                     sx={{
                                         marginTop: 3,
@@ -216,7 +216,7 @@ const Qcm = () => {
                             {score <= questions.length / 2 && (
                                 <Box
                                     component="img"
-                                    src="././public/nemo.jpg"
+                                    src="././public/images/nemo.jpg"
                                     alt="Vous pouvez encore vous améliorez !"
                                     sx={{
                                         marginTop: 3,
@@ -229,7 +229,7 @@ const Qcm = () => {
                             {score > questions.length / 2 && score != questions.length && (
                                 <Box
                                     component="img"
-                                    src="././public/dory.png"
+                                    src="././public/images/dory.png"
                                     alt="Vous y êtes presque !"
                                     sx={{
                                         marginTop: 3,
