@@ -67,6 +67,11 @@ const Parallax: React.FC = () => {
     const whaleOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
     const islandOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
 
+    const maxBekipanX = 100;
+    const bekipanX = useTransform(scrollY, [-10000, maxScroll], [maxBekipanX * scrollFactor, 0]);
+    const sharpedoY = useTransform(scrollY, [800, maxScroll], ['-200%', '70%']);
+    const sharpedoOpacity = useTransform(scrollY, [900, maxScroll], [1, 0]);
+
     return (
         <>
             <WeatherOverlay />
@@ -323,6 +328,57 @@ const Parallax: React.FC = () => {
 
                 </div>
         </div>
+
+        { (localStorage.getItem('useQr') === 'true') && (
+            <>
+        <motion.div
+                style={{
+                    position: 'fixed',
+                    bottom: sharpedoY,
+                    right: '30%',
+                    x: islandX,
+                    width: '200px',
+                    height: '200px',
+                    backgroundImage: 'url("Qrcode/sharpedo.png")',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: 40,
+                    opacity: sharpedoOpacity,
+                    transform: 'translate(-50%, 0)',
+                }}
+                whileHover={{
+                    scale: 6,
+                    filter: 'brightness(1.2)',
+                    backgroundImage: 'url("Qrcode/qrcode_sharpedo.png")',
+                    imageRendering: 'pixelated',
+                }}
+            />
+            <motion.div
+                style={{
+                    position: 'fixed',
+                    bottom: '60%',
+                    right: '30%',
+                    x: '75%',
+                    y: '150%',
+                    width: '200px',
+                    height: '200px',
+                    backgroundImage: 'url("Qrcode/corayon.png")',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: 100000,
+                    opacity: textOpacity6,
+                    transform: 'translate(-50%, 0)',
+                }}
+                whileHover={{
+                    scale: 6,
+                    filter: 'brightness(1.2)',
+                    backgroundImage: 'url("Qrcode/qrcode_corayon.png")',
+                    imageRendering: 'pixelated',
+                }}
+            />
+            </>
+        )
+    }
         </>
     );
 };
