@@ -69,6 +69,13 @@ const Navbar: React.FC = () => {
                 localStorage.setItem('useLogo', JSON.stringify(!JSON.parse(localStorage.getItem('useLogo') || 'false')));
                 }} />
             </Typography>
+            <Typography >
+              Activer le défi QRCode Pokémon <Switch
+              defaultChecked={JSON.parse(localStorage.getItem('useQr') || 'false')}
+              onClick={() => { 
+                localStorage.setItem('useQr', JSON.stringify(!JSON.parse(localStorage.getItem('useQr') || 'false')));
+                }} />
+            </Typography>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose} color="primary">
