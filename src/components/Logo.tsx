@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
 const Logo: React.FC = () => {
-    const [position, setPosition] = useState({ x: 10, y: 15 });
+    const [position, setPosition] = useState({ x: 10, y: 5 });
     const [rotation, setRotation] = useState(35);
     const [showScore, setShowScore] = useState(false);
     const [showCongrats, setShowCongrats] = useState(false);
     const [scorePosition, setScorePosition] = useState({ x: 0, y: 0 });
     const [score, setScore] = useState(0);
-    const [showFireworks, setShowFireworks] = useState(false);
 
     function getRandomPositionX() {
         return Math.floor(Math.random() * 90) + 5; // Génère une position aléatoire entre 5% et 95%
@@ -34,13 +33,13 @@ const Logo: React.FC = () => {
     useEffect(() => {
         if (score === 10) {
             setShowCongrats(true);
-            setShowFireworks(true);
             setTimeout(() => {
                 setShowCongrats(false);
-                setShowFireworks(false);
             }, 3000);
         }
     }, [score]);
+
+    const imageSize = 5.0 * Math.pow(97.0 / 100.0, score);
 
     return (
         <div>
@@ -49,6 +48,8 @@ const Logo: React.FC = () => {
                     onClick={handleClick}
                     style={{
                         position: 'fixed',
+                        width : `${imageSize}%`,
+                        height: `${imageSize*(3/4)}%`,
                         top: `${position.y}%`,
                         left: `${position.x}%`,
                         transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
@@ -56,12 +57,12 @@ const Logo: React.FC = () => {
                         zIndex: 10,
                     }}
                 >
-                    <img src="/LogoLyreco2.png" alt="Logo" style={{ width: `${20.0 * Math.pow(97.0 / 100.0, score)}%`, height: `${10.0 * Math.pow(97.0 / 100.0, score)}%`, opacity: 1 * Math.pow(3.0 / 5.0, score) }} />
+                    <img src="/LogoLyreco2.png" alt="Logo" style={{ width: `100%`, height: `100%`, opacity: 1 * Math.pow(3.0 / 5.0, score) }} />
                 </div>
             ) : (
                 showCongrats && (
                     <>
-                      {showFireworks && (
+                      {(
                         <img
                           src="/feuxArtifices.gif"
                           alt="Feux d'artifice"
@@ -108,6 +109,21 @@ const Logo: React.FC = () => {
                     Score +1
                 </div>
             )}
+            {showScore && (
+        <img
+          src="/EXPLOOSIOOOON.gif"
+          alt="Explosion"
+          style={{
+            position: 'fixed',
+            top: `${scorePosition.y}%`,
+            left: `${scorePosition.x}%`,
+            transform: 'translate(-50%, -50%)',
+            width: '5%',
+            height: '5%',
+            zIndex: 10,
+          }}
+        />
+      )}
         </div>
     );
 };
