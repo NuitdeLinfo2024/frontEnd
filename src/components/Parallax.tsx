@@ -1,4 +1,5 @@
 import React from 'react';
+import { Box } from '@mui/material';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import WeatherOverlay from '../weatherApi/WeatherOverlay';
 import './Parallax.css';
@@ -21,7 +22,8 @@ const Parallax: React.FC = () => {
 
     return (
         <>
-        {/* <WeatherOverlay /> */}
+        
+        <WeatherOverlay />
         <div style={{ height: '200vh', position: 'relative', overflow: 'hidden' }}>
             {/* Sky background gradient */}
             <div
