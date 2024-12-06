@@ -34,6 +34,9 @@
     width: 100%;
     height: auto;
 }
+.body {
+    height:500vh;
+}
 
 .wave {
     fill: #0077be;
@@ -51,4 +54,87 @@
   }
   
   
-  
+  /* Parallax.css */
+
+.text-container {
+    font-family: 'Montserrat, sans-serif';
+    color: black;
+    position: fixed;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+}
+
+.text-container h1 {
+    font-size: 2rem; /* Default size */
+}
+
+.text-container p {
+    font-size: 1rem; /* Default size */
+}
+
+@media (max-width: 1200px) {
+    .text-container h1 {
+        font-size: 1.8rem;
+    }
+    .text-container p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .text-container h1 {
+        font-size: 1.5rem;
+    }
+    .text-container p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .text-container h1 {
+        font-size: 1.2rem;
+    }
+    .text-container p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .text-container h1 {
+        font-size: 1rem;
+    }
+    .text-container p {
+        font-size: 0.8rem;
+    }
+    
+}
+.bubbles {
+    position: fixed;
+    pointer-events: none; /* Prevents bubbles from interfering with mouse events */
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: rise 3s infinite;
+}
+
+@keyframes rise {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-20px);
+    }
+}
+.fish-and-plankton {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
