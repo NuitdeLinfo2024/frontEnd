@@ -67,7 +67,7 @@ const Parallax: React.FC = () => {
     const islandOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
 
     return (
-     <div style={{ height: `${11900 * scrollFactor}px`, position: 'relative', overflow: 'hidden' }}>
+     <div style={{ height: `${12000 * scrollFactor}px`, position: 'relative', overflow: 'hidden' }}>
             {/* Sky background gradient */}
             <div style={{
                 position: 'fixed',
