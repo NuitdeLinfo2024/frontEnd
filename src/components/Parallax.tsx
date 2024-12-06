@@ -67,8 +67,6 @@ const Parallax: React.FC = () => {
     const whaleOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
     const islandOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
 
-    const maxBekipanX = 100;
-    const bekipanX = useTransform(scrollY, [-10000, maxScroll], [maxBekipanX * scrollFactor, 0]);
     const sharpedoY = useTransform(scrollY, [800, maxScroll], ['-200%', '70%']);
     const sharpedoOpacity = useTransform(scrollY, [900, maxScroll], [1, 0]);
 
