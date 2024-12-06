@@ -13,7 +13,7 @@ const About: React.FC = () => {
       <ul>
         <li>PICAUD Nicolas : Leader + Implémentation DevOps + Implémentation Défi API Météo</li>
         <li>ROCHDI Rana : Implémentation Parallax</li>
-        <li>MAHAMOUDOU Hanane : Design Site + Implémentation QCM + Implémentation Texte Défi Principal</li>
+        <li>MAHAMOUDOU Hannane : Design Site + Implémentation QCM + Écriture du Texte Défi Principal</li>
         <li>CHERBLANC Noah : Implémentation Défi QR Codes Pokémon</li>
         <li>ROSANO Romain : Implémentation Défi CAPTCHA Interactif</li>
         <li>ROUX Yann : Implémentation Défi Logo Caché</li>
