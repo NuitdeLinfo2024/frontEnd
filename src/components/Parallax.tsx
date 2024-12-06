@@ -7,7 +7,6 @@ const Parallax: React.FC = () => {
     const { scrollY } = useScroll();
     const [maxScroll, setMaxScroll] = useState(0);
     const [showFishAndPlankton, setShowFishAndPlankton] = useState(false);
-    const [showText, setShowText] = useState(false);
 
     useEffect(() => {
         const updateMaxScroll = () => {
@@ -24,17 +23,14 @@ const Parallax: React.FC = () => {
         const handleScroll = () => {
             if(scrollY.get() <= maxScroll -2500){
                 setShowFishAndPlankton(false);
-                setShowText(true);
 
             }
             else if (scrollY.get() >= maxScroll -2500 && scrollY.get() <= maxScroll -1500) { // Adjust threshold as needed
                 setShowFishAndPlankton(true);
-                setShowText(true);
                 textOpacity4.set(0);
 
             } else if(scrollY.get() >= maxScroll ) {
                 setShowFishAndPlankton(false);
-                setShowText(true);
 
             }
         };
@@ -65,6 +61,9 @@ const Parallax: React.FC = () => {
     const whaleY = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['0%', '90%']);
     const whaleOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
     const islandOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
+
+    const sharpedoY = useTransform(scrollY, [800, maxScroll], ['-200%', '70%']);
+    const sharpedoOpacity = useTransform(scrollY, [900, maxScroll], [1, 0]);
 
     return (
      <div style={{ height: `${12000 * scrollFactor}px`, position: 'relative', overflow: 'hidden' }}>
@@ -316,8 +315,62 @@ const Parallax: React.FC = () => {
 
 
                 </div>
+                { (localStorage.getItem('useQr') === 'true') && (
+            <>
+        <motion.div
+                style={{
+                    position: 'fixed',
+                    bottom: sharpedoY,
+                    right: '30%',
+                    x: islandX,
+                    width: '200px',
+                    height: '200px',
+                    backgroundImage: 'url("Qrcode/sharpedo.png")',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: 40,
+                    opacity: sharpedoOpacity,
+                    transform: 'translate(-50%, 0)',
+                }}
+                whileHover={{
+                    scale: 6,
+                    filter: 'brightness(1.2)',
+                    backgroundImage: 'url("Qrcode/qrcode_sharpedo.png")',
+                    imageRendering: 'pixelated',
+                }}
+            />
+            <motion.div
+                style={{
+                    position: 'fixed',
+                    bottom: '60%',
+                    right: '30%',
+                    x: '75%',
+                    y: '150%',
+                    width: '200px',
+                    height: '200px',
+                    backgroundImage: 'url("Qrcode/corayon.png")',
+                    backgroundSize: 'contain',
+                    backgroundRepeat: 'no-repeat',
+                    zIndex: 100000,
+                    opacity: textOpacity6,
+                    transform: 'translate(-50%, 0)',
+                }}
+                whileHover={{
+                    scale: 6,
+                    filter: 'brightness(1.2)',
+                    backgroundImage: 'url("Qrcode/qrcode_corayon.png")',
+                    imageRendering: 'pixelated',
+                }}
+            />
+            </>
+        )}
         </div>
-    );
+
+        
+    
+        
+    )
+    
 };
 
 export default Parallax;
