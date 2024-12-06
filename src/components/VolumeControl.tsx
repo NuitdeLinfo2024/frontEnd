@@ -112,6 +112,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({ audioRef }) => {
           bottom: 16,
           right: 16,
           textAlign: 'center',
+          zIndex : 9999,
         }}
       >
         <IconButton onClick={() => setShowBox(!showBox)} aria-label="volume">
@@ -129,6 +130,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({ audioRef }) => {
             textAlign: 'center',
             width: '300px',
             height: '300px',
+            zIndex: 9999,
           }}
           style={{ top: boxPosition.top, left: boxPosition.left }}
         >
@@ -137,7 +139,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({ audioRef }) => {
             src={imageSrc}
             alt="Gradient"
             onClick={handleImageClick}
-            style={{ width: '200px', height: '200px', display: 'block', margin: '0 auto' }}
+            style={{ width: '200px', height: '200px', display: 'block', margin: '0 auto', zIndex  : 9999}}
           />
           <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
           <p style={{ fontSize: '18px', fontWeight: 'bold' }}>

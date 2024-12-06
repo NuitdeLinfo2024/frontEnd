@@ -32,7 +32,7 @@ const PlayPauseControl: React.FC<PlayPauseControlProps> = ({ audioRef }) => {
   };
 
   return (
-    <div style={{ position: 'fixed', bottom: 16, left: 16 }}>
+    <div style={{ position: 'fixed', bottom: 16, left: 16, zIndex : 9999 }}>
       <IconButton onClick={handlePlayPause} aria-label={isPlaying ? 'pause' : 'play'}>
         {isPlaying ? <PauseIcon /> : <PlayArrowIcon />}
       </IconButton>
