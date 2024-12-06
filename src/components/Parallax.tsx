@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import './Parallax.css';
 import Bubble from './Bubble';
-import WeatherOverlay from '../weatherApi/WeatherOverlay';
 
 const Parallax: React.FC = () => {
     const { scrollY } = useScroll();
@@ -44,14 +43,14 @@ const Parallax: React.FC = () => {
         return () => unsubscribe();
     }, [scrollY, maxScroll]);
 
-    const scrollFactor = 1;
+    const scrollFactor = 0.5;
     const maxBoatX = window.innerWidth - 200;
     const maxIslandX = window.innerWidth - 200;
     const maxSunX = window.innerWidth;
 
     const boatX = useTransform(scrollY, [0, maxScroll], [0, maxBoatX * scrollFactor]);
     const islandX = useTransform(scrollY, [0, maxScroll], [maxIslandX * scrollFactor, 0]);
-    const sunX = useTransform(scrollY, [-10000, maxScroll], [maxSunX * scrollFactor, 0]);
+    const sunX = useTransform(scrollY, [-10000, maxScroll], [maxSunX * scrollFactor * 0.2, maxSunX * scrollFactor * 0.8]);
     const textOpacity1 = useTransform(scrollY, [0, 700 * scrollFactor, 1500 * scrollFactor], [1, 1, 0]);
     const textOpacity2 = useTransform(scrollY, [1500 * scrollFactor, 2400 * scrollFactor, 3200 * scrollFactor], [0, 1, 0]);
     const textOpacity3 = useTransform(scrollY, [3200 * scrollFactor, 4100 * scrollFactor, 4900 * scrollFactor], [0, 1, 0]);
@@ -68,9 +67,8 @@ const Parallax: React.FC = () => {
     const islandOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
 
     return (
-        <>
-            <WeatherOverlay />
      <div style={{ height: `${12000 * scrollFactor}px`, position: 'relative', overflow: 'hidden' }}>
+            {/* Sky background gradient */}
             <div style={{
                 position: 'fixed',
                 top: '0',
@@ -91,7 +89,7 @@ const Parallax: React.FC = () => {
                 backgroundImage: 'url("soleil.png")',
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
-                zIndex: 3,
+                zIndex: 6,
             }} />
             {/* Ocean with SVG wave animation */}
             <div className="ocean">
@@ -117,21 +115,21 @@ const Parallax: React.FC = () => {
                 x: boatX,
                 width: '300px',
                 height: '100px',
-                backgroundImage: 'url("man-fishing-boat-silhouette-19.png")',
+                backgroundImage: 'url("https://clipart-library.com/images_k/man-fishing-boat-silhouette/man-fishing-boat-silhouette-19.png")',
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
                 transform: 'translate(-50%, -50%)',
                 zIndex: 3,
             }} />
             {/* Islands and other elements */}
-            <motion.div style={{
+            <motion.div className='orc' style={{
                 position: 'fixed',
                 bottom: whaleY,
                 right: '30%',
                 x: islandX,
                 width: '200px',
                 height: '200px',
-                backgroundImage: 'url("Whale-PNG-Image-Background.png")',
+                backgroundImage: 'url("https://www.pngarts.com/files/3/Whale-PNG-Image-Background.png")',
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
                 zIndex: 4,
@@ -145,13 +143,13 @@ const Parallax: React.FC = () => {
                 x: islandX,
                 width: '200px',
                 height: '200px',
-                backgroundImage: 'url("./images/ile.png")',
+                backgroundImage: 'url("/images/ile.png")',
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
                 zIndex: 4,
                 transform: 'translate(50%, 0)',
             }} />
-            <motion.div style={{
+            <motion.div className='ile2' style={{
                 position: 'fixed',
                 bottom: islandY,
                 right: '45%',
@@ -167,31 +165,31 @@ const Parallax: React.FC = () => {
             }} />
 
             {/* Texts */}
-            <div className="text-container" style={{ top: '25%' }}>
+            <div className="text-container" style={{ top: '32%' }}>
                 <motion.div style={{ opacity: textOpacity1 }}>
                     <h1>Mangrove</h1>
                     <p>
-                        Comme vous le savez, les humains se protègent des petits envahisseurs communément appelés des “virus” ou “bactérie” grâce à leurs systèmes immunitaires. La mer a le même fonctionnement et son bouclier ce sont les mangroves. Elle protège les herbiers et les récifs coralliens en retenant les sédiments issus de l'érosion de la terre, limitant ainsi l'envasement, mais aussi en permettant une épuration de l'eau. Autrement dit, les mangroves et les zones humides côtières protègent les écosystèmes marins contre les polluants et les tempêtes.
+                        Comme vous le savez, les humains se protègent des petits envahisseurs communément appelés des “virus” ou “bactérie” grâce à leurs systèmes immunitaires. La mer a le même fonctionnement et son bouclier ce sont les mangroves. Elle protège les herbiers et les récifs coralliens en retenant les sédiments issus de l'érosion de la terre, limitant ainsi l'envasement, mais aussi en permettant une épuration de l'eau.
                     </p>
                 </motion.div>
             </div>
 
-            <div className="text-container" style={{ top: '25%' }}>
+            <div className="text-container" style={{ top: '30%' }}>
                 <motion.div style={{ opacity: textOpacity2 }}>
                     <h1>Surface de l'eau</h1>
                     <p>
-                        Tout comme un être vivant, l’eau est en interaction constante avec son environnement. Les différentes activités humaines comme l’agriculture, l’urbanisation, les transports ou encore l’industrie, viennent modifier les propriétés de l’eau. Les actions anthropiques conduisent à la dégradation de l’environnement marin et à l’altération des propriétés physico-chimiques de l’eau, causant des problèmes de santé pour les organismes vivants qui l'habitent.
+                        Tout comme un être vivant, l’eau est en interaction constante avec son environnement. Les différentes activités humaines comme l’agriculture, l’urbanisation, les transports ou encore l’industrie, viennent modifier les propriétés de l’eau.
                     </p>
                 </motion.div>
             </div>
-            <div className="text-container" style={{ top: '25%' }}>
+            <div className="text-container-maree text-container" style={{ top: '40%' }}>
                 <motion.div style={{ opacity: textOpacity3 }}>
                     <h1>Marée </h1>
                     <p>
                     Le cœur pompe le sang, grâce à ses contractions régulières, le propulse dans tout l'organisme et assure ainsi l'alimentation en oxygène du corps entier. C’est ce qui maintient le corps vivant en gardant les organes en bonne santé. Les marées ont ce même pouvoir avec la mer. Elles régulent le flux et le reflux de l'eau de mer, influençant l’équilibre des écosystèmes marins. Les courants de marée jouent par ailleurs un rôle global sur le climat en contribuant au mélange vertical de l'océan, qui refroidit la surface par le contact avec l'eau profonde.                     </p>
                 </motion.div>
             </div>
-            <div className="text-container" style={{ top: '25%', color: 'white' }}>
+            <div className="text-container" style={{ top: '40%', color: 'white' }}>
                 <motion.div style={{ opacity: textOpacity4 }}>
                     <h1>Plancton</h1>
                     <p>
@@ -210,20 +208,20 @@ const Parallax: React.FC = () => {
                     top: 0,
                     left: 0,
                 }}>
-                                            <motion.img src="./images/plancton.png" alt="Fish" style={{opacity:textOpacity4,  position: 'fixed', width: '100px' , top:'60%',left:'10%'}} />
-                        <motion.img src="./images/fish.png" alt="Plankton" style={{opacity:textOpacity4, position: 'fixed', width: '100px', top:'90%',left:'40%' }} />
+                                            <motion.img src="./images/plancton.png" alt="Fish" style={{opacity:textOpacity4,  position: 'fixed', width: '100px' , top:'80%',left:'10%'}} />
+                        <motion.img className='fish' src="./images/fish.png" alt="Plankton" style={{opacity:textOpacity4, position: 'fixed', width: '100px', top:'90%',left:'40%' }} />
                         <motion.img src="./images/fish2.png" alt="Plankton" style={{opacity:textOpacity4,  position: 'fixed', top:'50%', left:'50%',width: '100px',}} />
-                        <motion.img src="./images/jellyfish.png" alt="Jellyfish" style={{opacity:textOpacity4,  position: 'fixed', top:'60%', left:'30%',width: '100px',}} />
+                        <motion.img className='fish' src="./images/jellyfish.png" alt="Jellyfish" style={{opacity:textOpacity4,  position: 'fixed', top:'60%', left:'30%',width: '100px',}} />
 
-                        <motion.img src="./images/fish.png" alt="Fish" style={{ opacity:textOpacity4,  position: 'fixed', width: '100px' , top:'40%',left:'10%'}} />
+                        <motion.img className='fish' src="./images/fish.png" alt="Fish" style={{ opacity:textOpacity4,  position: 'fixed', width: '100px' , top:'60%',left:'10%'}} />
                         <motion.img src="./images/plancton.png" alt="Plankton" style={{opacity:textOpacity4, position: 'fixed', width: '100px', top:'20%',left:'90%' }} />
                         <motion.img src="./images/fish2.png" alt="Plankton" style={{opacity:textOpacity4,  position: 'fixed', top:'80%', left:'90%',width: '100px',}} />
-                        <motion.img src="./images/jellyfish.png" alt="Jellyfish" style={{opacity:textOpacity4,  position: 'fixed', top:'60%', left:'70%',width: '100px',}} />
+                        <motion.img className='fish' src="./images/jellyfish.png" alt="Jellyfish" style={{opacity:textOpacity4,  position: 'fixed', top:'60%', left:'70%',width: '100px',}} />
 
-                        <motion.img src="./images/fish.png" alt="Fish" style={{ opacity:textOpacity4,  position: 'fixed', width: '100px' , top:'40%',left:'10%'}} />
+                        <motion.img className='fish' src="./images/fish.png" alt="Fish" style={{ opacity:textOpacity4,  position: 'fixed', width: '100px' , top:'60%',left:'10%'}} />
                         <motion.img src="./images/plancton.png" alt="Plankton" style={{opacity:textOpacity4, position: 'fixed', width: '100px', top:'20%',left:'90%' }} />
                         <motion.img src="./images/fish2.png" alt="Plankton" style={{opacity:textOpacity4,  position: 'fixed', top:'80%', left:'90%',width: '100px',}} />
-                        <motion.img src="./images/jellyfish.png" alt="Jellyfish" style={{opacity:textOpacity4,  position: 'fixed', top:'60%', left:'70%',width: '100px',}} />
+                        <motion.img className='fish' src="./images/jellyfish.png" alt="Jellyfish" style={{opacity:textOpacity4,  position: 'fixed', top:'60%', left:'70%',width: '100px',}} />
 {/* Additional Wave SVGs */}
                </div>
 
@@ -238,8 +236,8 @@ const Parallax: React.FC = () => {
 )   
 }
             
-            {showText && (
-                <div className="text-container" style={{ top:'45%', color: 'white',position:'fixed' }}>
+            
+                <div className="text-container" style={{ top:'55%', color: 'white',position:'fixed' }}>
                     <motion.div style={{opacity: textOpacity5, top: '55%',}} >
                         <h1>Poissons </h1>
                         <p>
@@ -251,24 +249,20 @@ const Parallax: React.FC = () => {
                         <p>
                         La mer et l’atmosphère sont en continuelle communication. Ensemble, ils constituent une machine thermique naturelle. Ils échangent en permanence du gaz, de l’eau, de la chaleur, que la mer redistribue autour du globe grâce aux courants marins. Cet échange est possible grâce aux courants marins. Ils jouent le même rôle que les veines, qui transportent les nutriments et nourrissent les organes du corps.                        </p>
                     </motion.div>
-                    <motion.div style={{opacity: textOpacity5}} >
-                    <motion.img src="./images/fish.png" alt="Fish" style={{ position: 'fixed', width: '100px', top: '80%', left: '10%' }} animate={{ x: window.innerWidth }} transition={{ duration: 10 }} />
-            <motion.img src="./images/fish.png" alt="Plankton" style={{ position: 'fixed', top: '95%', left: '30%', width: '100px' }} animate={{ x: window.innerWidth }} transition={{ duration: 10}} />
-            <motion.img src="./images/fish.png" alt="Jellyfish" style={{ position: 'fixed', top: '90%', left: '20%', width: '100px' }} animate={{ x: window.innerWidth }} transition={{ duration: 10}} />
-                        <motion.img src="./images/fish.png" alt="Plankton" style={{  position: 'fixed', width: '100px', top:'90%',left:'125%' }} />
-                        <motion.img src="./images/fish2.png" alt="Plankton" style={{   position: 'fixed', top:'50%', left:'145%',width: '100px',}} />
-                        <motion.img src="./images/jellyfish.png" alt="Jellyfish" style={{   position: 'fixed', top:'60%', left:'135%',width: '100px',}} />
+                    </div>
+            
+                        <motion.img src="./images/fish.png" alt="Plankton" style={{zIndex:10, opacity: textOpacity5, position: 'fixed', width: '100px', top:'80%',left:'65%' }} />
+                        <motion.img src="./images/fish2.png" alt="Plankton" style={{zIndex:10,opacity: textOpacity5,   position: 'fixed', top:'50%', left:'80%',width: '100px',}} />
+                        <motion.img className="fish"src="./images/jellyfish.png" alt="Jellyfish" style={{ zIndex:10,opacity: textOpacity5 , position: 'fixed', top:'80%', left:'40%',width: '100px',}} />
 
-                        <motion.img src="./images/fish.png" alt="Fish" style={{    position: 'fixed', width: '100px' , top:'40%',left:'135%'}} />
-                        <motion.img src="./images/fish2.png" alt="Plankton" style={{   position: 'fixed', top:'80%', left:'145%',width: '100px',}} />
-                        <motion.img src="./images/jellyfish.png" alt="Jellyfish" style={{   position: 'fixed', top:'60%', left:'135%',width: '100px',}} />
+                        <motion.img src="./images/fish.png" alt="Fish" style={{zIndex:10,opacity: textOpacity5,    position: 'fixed', width: '100px' , top:'40%',left:'135%'}} />
+                        <motion.img src="./images/fish2.png" alt="Plankton" style={{zIndex:10, opacity: textOpacity5,  position: 'fixed', top:'80%', left:'145%',width: '100px',}} />
+                        <motion.img className="fish" src="./images/jellyfish.png" alt="Jellyfish" style={{zIndex:10, opacity: textOpacity5,  position: 'fixed', top:'60%', left:'135%',width: '100px',}} />
+            
 
-            </motion.div>
-
-                </div>
                 
-            )}
-            <div className="text-container" style={{position:'fixed', top: '45%', color: 'white' , rowGap:'20px'}}>
+            
+            <div className="text-container" style={{position:'fixed', top: '55%', color: 'white' , rowGap:'20px'}}>
                 <motion.div style={{ opacity: textOpacity6 }}>
                     <h1>Algues </h1>
                     <p>
@@ -312,9 +306,9 @@ const Parallax: React.FC = () => {
                     <h1>Les abysses  </h1>
                     <p>
                     Le cerveau est un centre de contrôle et de mystères de l’être humain. Il peut être comparé aux abysses, où résident des écosystèmes complexes et en grande partie inexplorés.             </p>   </motion.div>
-                <motion.img src="./images/volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-90%', left: '0%', width: '300px' }}  />
-                <motion.img src="./images/volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-90%', left: '50%', width: '300px' }}  />
-                <motion.img src="./images/volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-90%', left: '100%', width: '300px' }}  />
+                <motion.img src="./images/volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-90%', left: '0%', width: '300px',zIndex:100 }}  />
+                <motion.img src="./images/volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-90%', left: '50%', width: '300px',zIndex:100 }}  />
+                <motion.img src="./images/volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-90%', left: '100%', width: '300px',zIndex:100 }}  />
                 <motion.img src="https://wallpapers.com/images/hd/volcano-with-rising-smoke-png-63-xwo8l7j1qngmihnl.jpg" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-110%', left: '25%', width: '300px' }}  />
                 <motion.img src="https://wallpapers.com/images/hd/volcano-with-rising-smoke-png-63-xwo8l7j1qngmihnl.jpg" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-110%', left: '75%', width: '300px' }}  />
                 
@@ -323,7 +317,6 @@ const Parallax: React.FC = () => {
 
                 </div>
         </div>
-        </>
     );
 };
 
