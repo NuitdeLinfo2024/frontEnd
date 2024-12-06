@@ -11,7 +11,7 @@ const Parallax: React.FC = () => {
 
     useEffect(() => {
         const updateMaxScroll = () => {
-            setMaxScroll(document.body.scrollHeight - window.innerHeight);
+            setMaxScroll(11700 * scrollFactor); // Adjust maxScroll to stop when the last text disappears
         };
         updateMaxScroll();
         window.addEventListener('resize', updateMaxScroll);
@@ -67,7 +67,7 @@ const Parallax: React.FC = () => {
     const islandOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
 
     return (
-     <div style={{ height: '800vh', position: 'relative', overflow: 'hidden' }}>
+     <div style={{ height: `${11900 * scrollFactor}px`, position: 'relative', overflow: 'hidden' }}>
             {/* Sky background gradient */}
             <div style={{
                 position: 'fixed',
@@ -217,6 +217,11 @@ const Parallax: React.FC = () => {
                         <motion.img src="./plancton.png" alt="Plankton" style={{opacity:textOpacity4, position: 'fixed', width: '100px', top:'20%',left:'90%' }} />
                         <motion.img src="./fish2.png" alt="Plankton" style={{opacity:textOpacity4,  position: 'fixed', top:'80%', left:'90%',width: '100px',}} />
                         <motion.img src="./jellyfish.png" alt="Jellyfish" style={{opacity:textOpacity4,  position: 'fixed', top:'60%', left:'70%',width: '100px',}} />
+
+                        <motion.img src="./fish.png" alt="Fish" style={{ opacity:textOpacity4,  position: 'fixed', width: '100px' , top:'40%',left:'10%'}} />
+                        <motion.img src="./plancton.png" alt="Plankton" style={{opacity:textOpacity4, position: 'fixed', width: '100px', top:'20%',left:'90%' }} />
+                        <motion.img src="./fish2.png" alt="Plankton" style={{opacity:textOpacity4,  position: 'fixed', top:'80%', left:'90%',width: '100px',}} />
+                        <motion.img src="./jellyfish.png" alt="Jellyfish" style={{opacity:textOpacity4,  position: 'fixed', top:'60%', left:'70%',width: '100px',}} />
 {/* Additional Wave SVGs */}
                </div>
 
@@ -271,28 +276,28 @@ const Parallax: React.FC = () => {
                     <h1>Coraux </h1>
                     <p>
                     Les coraux forment la structure de base des récifs. Ils offrent un habitat à d'innombrables espèces marines. Ils peuvent être comparés au squelette humain, qui soutient et sert de base à l’ensemble du corps. De plus, les coraux, comme les os du squelette, participent à l'équilibre global. Les coraux jouent un rôle dans la protection des côtes et le cycle du carbone, tandis que les os stockent des minéraux essentiels et participent à la production de cellules sanguines. </p>               </motion.div>
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '-20%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '-20%', width: '200px' }}  />
 
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '0%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '0%', width: '200px' }}  />
 
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '20%', width: '200px' }}  />
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '40%', width: '200px' }}  />
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '60%', width: '200px' }}  />
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '80%', width: '200px' }}  />
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '100%', width: '200px' }}  />
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '120%', width: '200px' }}  />
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '130%', width: '200px' }}  />
-                <motion.img src="./coraux.png" alt="Coraux" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '-20%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '20%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '40%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '60%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '80%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '100%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '120%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '130%', width: '200px' }}  />
+                <motion.img src="./coraux.png" alt="Coraux" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '-20%', width: '200px' }}  />
 
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '0%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '0%', width: '200px' }}  />
 
-                <motion.img src="./coraux.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '20%', width: '200px' }}  />
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '40%', width: '200px' }}  />
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '60%', width: '200px' }}  />
-                <motion.img src="./coraux.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '80%', width: '200px' }}  />
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '100%', width: '200px' }}  />
-                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '120%', width: '200px' }}  />
-                <motion.img src="./coraux.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '130%', width: '200px' }}  />
+                <motion.img src="./coraux.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '20%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '40%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '60%', width: '200px' }}  />
+                <motion.img src="./coraux.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '80%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '100%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '120%', width: '200px' }}  />
+                <motion.img src="./coraux.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed',     bottom:'-50%', left: '130%', width: '200px' }}  />
 
 
                 </div>
@@ -305,11 +310,11 @@ const Parallax: React.FC = () => {
                     <h1>Les abysses  </h1>
                     <p>
                     Le cerveau est un centre de contrôle et de mystères de l’être humain. Il peut être comparé aux abysses, où résident des écosystèmes complexes et en grande partie inexplorés.             </p>   </motion.div>
-                <motion.img src="./volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '135%', left: '0%', width: '300px' }}  />
-                <motion.img src="./volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '135%', left: '50%', width: '300px' }}  />
-                <motion.img src="./volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '135%', left: '100%', width: '300px' }}  />
-                <motion.img src="https://wallpapers.com/images/hd/volcano-with-rising-smoke-png-63-xwo8l7j1qngmihnl.jpg" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '120%', left: '25%', width: '300px' }}  />
-                <motion.img src="https://wallpapers.com/images/hd/volcano-with-rising-smoke-png-63-xwo8l7j1qngmihnl.jpg" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '120%', left: '75%', width: '300px' }}  />
+                <motion.img src="./volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-90%', left: '0%', width: '300px' }}  />
+                <motion.img src="./volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-90%', left: '50%', width: '300px' }}  />
+                <motion.img src="./volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-90%', left: '100%', width: '300px' }}  />
+                <motion.img src="https://wallpapers.com/images/hd/volcano-with-rising-smoke-png-63-xwo8l7j1qngmihnl.jpg" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-110%', left: '25%', width: '300px' }}  />
+                <motion.img src="https://wallpapers.com/images/hd/volcano-with-rising-smoke-png-63-xwo8l7j1qngmihnl.jpg" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', bottom: '-110%', left: '75%', width: '300px' }}  />
                 
                 <motion.img src="https://png.pngtree.com/png-vector/20230814/ourmid/pngtree-sticker-showing-an-underwater-creature-clipart-vector-png-image_6897948.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '10%', left: '105%', width: '300px' }}  />
 
