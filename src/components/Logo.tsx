@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
 
 const Logo: React.FC = () => {
-    const [position, setPosition] = useState({ x: getRandomPosition(), y: getRandomPosition() });
-    const [rotation, setRotation] = useState(getRandomRotation());
+    const [position, setPosition] = useState({ x: 10, y: 15 });
+    const [rotation, setRotation] = useState(35);
     const [showScore, setShowScore] = useState(false);
     const [showCongrats, setShowCongrats] = useState(false);
     const [scorePosition, setScorePosition] = useState({ x: 0, y: 0 });
     const [score, setScore] = useState(0);
+    const [showFireworks, setShowFireworks] = useState(false);
 
-    function getRandomPosition() {
-        return Math.floor(Math.random() * 80) + 10; // Génère une position aléatoire entre 10% et 90%
+    function getRandomPositionX() {
+        return Math.floor(Math.random() * 90) + 5; // Génère une position aléatoire entre 5% et 95%
+    }
+
+    function getRandomPositionY() {
+        return Math.floor(Math.random() * 80) + 15; // Génère une position aléatoire entre 10% et 95%
     }
 
     function getRandomRotation() {
@@ -21,23 +26,25 @@ const Logo: React.FC = () => {
         setShowScore(true);
         setTimeout(() => {
             setShowScore(false);
-        }, 1000); 
-        setPosition({ x: getRandomPosition(), y: getRandomPosition() });
+        }, 2000);
+        setPosition({ x: getRandomPositionX(), y: getRandomPositionY() });
         setRotation(getRandomRotation());
-        setScore(score + 1); 
+        setScore(score + 1);
     };
     useEffect(() => {
-        if (score === 5) {
-          setShowCongrats(true);
-          setTimeout(() => {
-            setShowCongrats(false);
-          }, 2000); // Affiche "Bien ouej fraté!!!" pendant 2 secondes
+        if (score === 10) {
+            setShowCongrats(true);
+            setShowFireworks(true);
+            setTimeout(() => {
+                setShowCongrats(false);
+                setShowFireworks(false);
+            }, 3000);
         }
-      }, [score]);
+    }, [score]);
 
     return (
         <div>
-            {score < 5 ? (
+            {score < 10 ? (
                 <div
                     onClick={handleClick}
                     style={{
@@ -49,34 +56,52 @@ const Logo: React.FC = () => {
                         zIndex: 10,
                     }}
                 >
-                    <img src="/LogoLyreco2.png" alt="Logo" style={{ width: '20%', height: '10%', opacity: 0.3 * Math.pow(1.0/2.0, score) }} />
+                    <img src="/LogoLyreco2.png" alt="Logo" style={{ width: `${20.0 * Math.pow(97.0 / 100.0, score)}%`, height: `${10.0 * Math.pow(97.0 / 100.0, score)}%`, opacity: 1 * Math.pow(3.0 / 5.0, score) }} />
                 </div>
             ) : (
                 showCongrats && (
-                <div
-                    style={{
-                        position: 'fixed',
-                        top: '50%',
-                        left: '50%',
-                        transform: 'translate(-50%, -50%)',
-                        color: 'red',
-                        fontSize: '80px',
-                        zIndex: 11,
-                    }}
-                >
-                    Bien ouej fraté!!!
-                </div>
-                )
+                    <>
+                      {showFireworks && (
+                        <img
+                          src="/feuxArtifices.gif"
+                          alt="Feux d'artifice"
+                          style={{
+                            position: 'fixed',
+                            top: '50%',
+                            left: '50%',
+                            transform: 'translate(-50%, -50%)',
+                            width: '100%',
+                            height: '100%',
+                            zIndex: 10,
+                          }}
+                        />
+                      )}
+                      <div
+                        style={{
+                          position: 'fixed',
+                          top: '50%',
+                          left: '50%',
+                          transform: 'translate(-50%, -50%)',
+                          color: 'red',
+                          fontSize: '80px',
+                          zIndex: 11,
+                        }}
+                      >
+                        Bien ouej mon gaté!!!
+                      </div>
+                    </>
+                  )
             )}
             {showScore && (
                 <div
+                    className="fade-out-up"
                     style={{
                         position: 'fixed',
                         top: `${scorePosition.y}%`,
                         left: `${scorePosition.x}%`,
                         transform: 'translate(-50%, -50%)',
-                        color: 'black',
-                        fontSize: '12px',
+                        color: 'green',
+                        fontSize: '18px',
                         zIndex: 11,
                     }}
                 >

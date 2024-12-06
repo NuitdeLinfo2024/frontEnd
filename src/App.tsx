@@ -5,6 +5,7 @@ import About from './components/About';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Parallax from './components/Parallax';
 import Logo from './components/Logo';
+import './App.css';
 
 const App: React.FC = () => {
   return (
@@ -18,8 +19,8 @@ const App: React.FC = () => {
             <Route path="/about" element={<About />} />
           </Routes>
         </Box>
+        <Logo />
       </Container>
-      <Logo />
     </Router>
   );
 }
