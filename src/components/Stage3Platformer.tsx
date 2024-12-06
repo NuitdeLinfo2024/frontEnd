@@ -50,7 +50,7 @@ const Stage3Platformer: React.FC<Stage3PlatformerProps> = ({ onComplete, goBackT
           setJumpHeight(height);
           requestAnimationFrame(jump);
         } else {
-          let fall = () => {
+          const fall = () => {
             if (height > 0) {
               height -= 5;
               setJumpHeight(height);
