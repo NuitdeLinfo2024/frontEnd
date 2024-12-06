@@ -17,13 +17,15 @@ const App: React.FC = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isCaptchaComplete, setIsCaptchaComplete] = useState(false);
 
-  if (!isCaptchaComplete) {
-    return (
-      <div style={{ textAlign: 'center', marginTop: '50px' }}>
-        <h1>CAPTCHA Interactif 😄</h1>
-        <Captcha onComplete={() => setIsCaptchaComplete(true)} />
-      </div>
-    );
+  if(localStorage.getItem('useCaptcha') === 'true') {
+    if (!isCaptchaComplete) {
+      return (
+        <div style={{ textAlign: 'center', marginTop: '50px' }}>
+          <h1>CAPTCHA Interactif 😄</h1>
+          <Captcha onComplete={() => setIsCaptchaComplete(true)} />
+        </div>
+      );
+    }
   }
 
   return (
@@ -33,7 +35,7 @@ const App: React.FC = () => {
       <Container>
         {/* Controls */}
       <PlayPauseControl audioRef={audioRef} />
-      <VolumeControl audioRef={audioRef} />
+      {(localStorage.getItem('useVolume') === 'true') &&  <VolumeControl audioRef={audioRef} />}
         <Box my={4}>
           <Routes>
             <Route path="/" element={<Parallax />} />

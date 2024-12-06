@@ -279,26 +279,31 @@ const WeatherOverlay: React.FC = () => {
     }, []);
 
     useEffect(() => {
-        switch (weatherCondition) {
-            case "Clouds":
-                setOverLayElement("Clouds");
-                break;
-            case "Rain":
-                setOverLayElement("Rain");
-                break;
-            case "Snow":
-                setOverLayElement("Snow");
-                break;
-            case "Thunderstorm":
-                setOverLayElement("Thunderstorm");
-                break;
-            case "Tornado":
-                setOverLayElement("Tornado");
-                break;
-            default:
-                setOverLayElement(null);
-                break;
+        if (localStorage.getItem('useWeatherAnimations') === 'true') {
+            switch (weatherCondition) {
+                case "Clouds":
+                    setOverLayElement("Clouds");
+                    break;
+                case "Rain":
+                    setOverLayElement("Rain");
+                    break;
+                case "Snow":
+                    setOverLayElement("Snow");
+                    break;
+                case "Thunderstorm":
+                    setOverLayElement("Thunderstorm");
+                    break;
+                case "Tornado":
+                    setOverLayElement("Tornado");
+                    break;
+                default:
+                    setOverLayElement(null);
+                    break;
+            }
+        } else {
+            setOverLayElement(null);
         }
+
     }, [weatherCondition]);
 
     return <>{
@@ -307,6 +312,7 @@ const WeatherOverlay: React.FC = () => {
         || overLayElement === "Snow" && <Snow />
         || overLayElement === "Thunderstorm" && <ThunderStorm />
         || overLayElement === "Tornado" && <Tornado />
+        || overLayElement === null && <></>
     }</>;
 };
 
