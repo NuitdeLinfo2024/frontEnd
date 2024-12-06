@@ -95,10 +95,7 @@ const templateWeatherData: WeatherData = {
             cod: 200
 }
 
-export const fetchWeatherData = async (
-    lat: number,
-    lon: number
-): Promise<WeatherData> => {
+export const fetchWeatherData = async (): Promise<WeatherData> => {
     try {
         if (import.meta.env.VITE_USE_CACHING === 'true') {
             console.log('Using cached data to return weather data');
