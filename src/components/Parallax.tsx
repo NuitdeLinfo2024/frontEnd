@@ -56,8 +56,10 @@ const Parallax: React.FC = () => {
     const textOpacity3 = useTransform(scrollY, [3200 * scrollFactor, 4100 * scrollFactor, 4900 * scrollFactor], [0, 1, 0]);
     const textOpacity4 = useTransform(scrollY, [4900 * scrollFactor, 5800 * scrollFactor, 6600 * scrollFactor], [0, 1, 0]);
     const textOpacity5 = useTransform(scrollY, [6600 * scrollFactor, 7500 * scrollFactor, 8300 * scrollFactor], [0, 1, 0]);
+    const textOpacity6 = useTransform(scrollY, [8300 * scrollFactor, 9200 * scrollFactor, 10000 * scrollFactor], [0, 1, 0]);
+    const textOpacity7 = useTransform(scrollY, [10000 * scrollFactor, 10900 * scrollFactor, 11700 * scrollFactor], [0, 1, 0]);
     const oceanHeight = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['45vh', '140vh']);
-    const oceanColor = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['#76b6c4', '#064273']);
+    const oceanColor = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['#76b6c4', '#032D39']);
     const boatY = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['50%', '-42%']);
     const islandY = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['0%', '120%']);
     const whaleY = useTransform(scrollY, [1500 * scrollFactor, maxScroll], ['0%', '90%']);
@@ -65,7 +67,7 @@ const Parallax: React.FC = () => {
     const islandOpacity = useTransform(scrollY, [1500 * scrollFactor, maxScroll], [1, 0]);
 
     return (
-     <div style={{ height: '700vh', position: 'relative', overflow: 'hidden' }}>
+     <div style={{ height: '800vh', position: 'relative', overflow: 'hidden' }}>
             {/* Sky background gradient */}
             <div style={{
                 position: 'fixed',
@@ -230,7 +232,7 @@ const Parallax: React.FC = () => {
 }
             
             {showText && (
-                <div className="text-container" style={{ top:'25%', color: 'white',position:'fixed' }}>
+                <div className="text-container" style={{ top:'45%', color: 'white',position:'fixed' }}>
                     <motion.div style={{opacity: textOpacity5, top: '55%',}} >
                         <h1>Poissons </h1>
                         <p>
@@ -246,10 +248,73 @@ const Parallax: React.FC = () => {
                     <motion.img src="./fish.png" alt="Fish" style={{ position: 'fixed', width: '100px', top: '80%', left: '10%' }} animate={{ x: window.innerWidth }} transition={{ duration: 10 }} />
             <motion.img src="./fish.png" alt="Plankton" style={{ position: 'fixed', top: '95%', left: '30%', width: '100px' }} animate={{ x: window.innerWidth }} transition={{ duration: 10}} />
             <motion.img src="./fish.png" alt="Jellyfish" style={{ position: 'fixed', top: '90%', left: '20%', width: '100px' }} animate={{ x: window.innerWidth }} transition={{ duration: 10}} />
+                        <motion.img src="./fish.png" alt="Plankton" style={{  position: 'fixed', width: '100px', top:'90%',left:'125%' }} />
+                        <motion.img src="./fish2.png" alt="Plankton" style={{   position: 'fixed', top:'50%', left:'145%',width: '100px',}} />
+                        <motion.img src="./jellyfish.png" alt="Jellyfish" style={{   position: 'fixed', top:'60%', left:'135%',width: '100px',}} />
+
+                        <motion.img src="./fish.png" alt="Fish" style={{    position: 'fixed', width: '100px' , top:'40%',left:'135%'}} />
+                        <motion.img src="./fish2.png" alt="Plankton" style={{   position: 'fixed', top:'80%', left:'145%',width: '100px',}} />
+                        <motion.img src="./jellyfish.png" alt="Jellyfish" style={{   position: 'fixed', top:'60%', left:'135%',width: '100px',}} />
+
             </motion.div>
+
                 </div>
                 
             )}
+            <div className="text-container" style={{position:'fixed', top: '45%', color: 'white' , rowGap:'20px'}}>
+                <motion.div style={{ opacity: textOpacity6 }}>
+                    <h1>Algues </h1>
+                    <p>
+                    Les algues dans la mer sont comparables aux poumons. Elles produisent une grande partie de l'oxygène de la planète grâce à la photosynthèse et les poumons permettent aux humains de pouvoir absorber de l’oxygène. Tous les deux jouent un rôle vital dans la respiration et le maintien de l'équilibre global.                    </p>
+                </motion.div>
+                  <motion.div style={{ opacity: textOpacity6 }}>
+                    <h1>Coraux </h1>
+                    <p>
+                    Les coraux forment la structure de base des récifs. Ils offrent un habitat à d'innombrables espèces marines. Ils peuvent être comparés au squelette humain, qui soutient et sert de base à l’ensemble du corps. De plus, les coraux, comme les os du squelette, participent à l'équilibre global. Les coraux jouent un rôle dans la protection des côtes et le cycle du carbone, tandis que les os stockent des minéraux essentiels et participent à la production de cellules sanguines. </p>               </motion.div>
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '-20%', width: '200px' }}  />
+
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '0%', width: '200px' }}  />
+
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '20%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '40%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '60%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '80%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '100%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '120%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '130%', width: '200px' }}  />
+                <motion.img src="./coraux.png" alt="Coraux" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '-20%', width: '200px' }}  />
+
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '0%', width: '200px' }}  />
+
+                <motion.img src="./coraux.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '20%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '40%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '60%', width: '200px' }}  />
+                <motion.img src="./coraux.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '80%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '100%', width: '200px' }}  />
+                <motion.img src="./algues.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '120%', width: '200px' }}  />
+                <motion.img src="./coraux.png" alt="Algues" style={{opacity: textOpacity6, position: 'fixed', top: '130%', left: '130%', width: '200px' }}  />
+
+
+                </div>
+                <div className="text-container" style={{position:'fixed', top: '45%', color: 'white' , rowGap:'20px'}}>
+                <motion.div style={{ opacity: textOpacity7 }}>
+                    <h1>Volcans </h1>
+                    <p>
+                    La chaleur corporelle est essentielle au fonctionnement des organes. Elle permet de maintenir une bonne croissance des cellules et le bon fonctionnement des organes. Cette chaleur est comparable aux volcans sous-marins qui eux, libèrent de la chaleur, influençant la vie marine environnante.     </p>           </motion.div>
+                <motion.div style={{ opacity: textOpacity7 }}>
+                    <h1>Les abysses  </h1>
+                    <p>
+                    Le cerveau est un centre de contrôle et de mystères de l’être humain. Il peut être comparé aux abysses, où résident des écosystèmes complexes et en grande partie inexplorés.             </p>   </motion.div>
+                <motion.img src="./volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '135%', left: '0%', width: '300px' }}  />
+                <motion.img src="./volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '135%', left: '50%', width: '300px' }}  />
+                <motion.img src="./volcano.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '135%', left: '100%', width: '300px' }}  />
+                <motion.img src="https://wallpapers.com/images/hd/volcano-with-rising-smoke-png-63-xwo8l7j1qngmihnl.jpg" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '120%', left: '25%', width: '300px' }}  />
+                <motion.img src="https://wallpapers.com/images/hd/volcano-with-rising-smoke-png-63-xwo8l7j1qngmihnl.jpg" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '120%', left: '75%', width: '300px' }}  />
+                
+                <motion.img src="https://png.pngtree.com/png-vector/20230814/ourmid/pngtree-sticker-showing-an-underwater-creature-clipart-vector-png-image_6897948.png" alt="Volcan" style={{opacity: textOpacity7, position: 'fixed', top: '10%', left: '105%', width: '300px' }}  />
+
+
+                </div>
         </div>
     );
 };
