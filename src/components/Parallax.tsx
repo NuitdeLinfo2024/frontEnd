@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useTransform, useScroll } from 'framer-motion';
 import './Parallax.css';
+import WeatherOverlay from '../weatherApi/WeatherOverlay';
 
 const Parallax: React.FC = () => {
     const { scrollY } = useScroll();
@@ -46,8 +47,9 @@ const Parallax: React.FC = () => {
     const islandOpacity = useTransform(scrollY, [600, maxScroll], [1, 0]);
 
     return (
+        <>
+            <WeatherOverlay />
         <div style={{ height: '200vh', position: 'relative', overflow: 'hidden' }}>
-            {/* Sky background gradient */}
             <div
                 style={{
                     position: 'fixed',
@@ -176,6 +178,7 @@ const Parallax: React.FC = () => {
             </div>
  
         </div>
+        </>
     );
 };
 
