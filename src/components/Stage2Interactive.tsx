@@ -81,7 +81,7 @@ const Stage2: React.FC<Stage2Props> = ({ onComplete }) => {
 
   return (
     <div style={{ position: 'relative', height: '80vh', width: '100vw', overflow: 'hidden' }}>
-      <h1>Stage 2: Challenge Intéractif</h1>
+      <h1>Niveau 2: Challenge Interactif</h1>
       
       {/* Step 1: Initial click to proceed */}
       {step === 1 && (
@@ -106,7 +106,7 @@ const Stage2: React.FC<Stage2Props> = ({ onComplete }) => {
       {/* Step 2: Randomized buttons */}
       {step === 2 && (
         <div>
-          <h2>J'ai dit appuyez sur les boutons</h2>
+          <h2>J'ai dit : "Appuyez sur LES boutons"</h2>
           {positions.map((position, index) => (
             <button
               key={index}
