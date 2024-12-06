@@ -66,21 +66,11 @@ export type WEATHER_TYPES = [
 // List of weather types
 export const weatherTypesList = [
     "Thunderstorm",
-    "Drizzle",
     "Rain",
     "Snow",
-    "Mist",
-    "Smoke",
-    "Haze",
-    "Dust",
-    "Fog",
-    "Sand",
-    "Dust",
-    "Ash",
-    "Squall",
-    "Tornado",
     "Clear",
     "Clouds",
+    "Tornado",
 ];
 
 const templateWeatherData: WeatherData = {
@@ -134,10 +124,9 @@ export const fetchWeatherData = async (
             );
             response = await response.json();
             if( response.cod !== 200) {
-                throw new Error(`Failed to fetch weather data: ${response.cod}`);
+                response = templateWeatherData;
             } 
             
-
         } else {
             // Mock response for demonstration purposes
             response = templateWeatherData;
