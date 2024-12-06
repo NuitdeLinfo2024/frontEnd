@@ -72,7 +72,7 @@ const Stage4Password: React.FC<Stage4PasswordProps> = ({ onComplete }) => {
     
   }
 
-  const [table, setTable] = useState(generateTable);
+  const [table] = useState(generateTable);
 
   const handleCompletion = () => {
     setFinished(true);
