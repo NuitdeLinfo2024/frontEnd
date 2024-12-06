@@ -43,6 +43,7 @@ const Logo: React.FC = () => {
     }, [score]);
 
     return (
+        (localStorage.getItem('useLogo') === 'true') && (
         <div>
             {score < 10 ? (
                 <div
@@ -111,7 +112,7 @@ const Logo: React.FC = () => {
                 </div>
             )}
         </div>
-    );
+    ));
 };
 
 export default Logo;
