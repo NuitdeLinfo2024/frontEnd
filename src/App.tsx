@@ -25,7 +25,7 @@ const App: React.FC = () => {
                     width: 160 * 5,
                     imageRendering: 'pixelated', // Makes the image sharp
                   }}
-                  alt="AAAAAAAAAa"
+                  alt="AAAAAAAAa"
                   src="/src/assets/image.png"
 
                 />
