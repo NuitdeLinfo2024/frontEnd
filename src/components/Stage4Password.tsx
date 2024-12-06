@@ -82,7 +82,7 @@ const Stage4Password: React.FC<Stage4PasswordProps> = ({ onComplete }) => {
   
   return (
     <div>
-      <h1>Stage 4: Password Game</h1>
+      <h1>Niveau 4: Password Game</h1>
       <DisplayPassword/>
       <BasicButtonGroup/>
       {valueButton1 === table[0] && (

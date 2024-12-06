@@ -95,7 +95,7 @@ const Stage3Platformer: React.FC<Stage3PlatformerProps> = ({ onComplete, goBackT
 
   return (
     <div style={{ textAlign: 'center' }}>
-      <h1>Stage 3 : Défi de la plateforme</h1>
+      <h1>Niveau 3 : Défi de la plateforme</h1>
       <p>Temps restant : {timeLeft}s</p>
       <div style={{ position: 'relative', margin: '20px auto', width: '400px', height: '100px', backgroundColor: 'lightgray', border: '2px solid black' }}>
         {/* Sol */}
