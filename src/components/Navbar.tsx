@@ -10,10 +10,13 @@ const Navbar: React.FC = () => {
           BDC Team
         </Typography>
         <Button color="inherit" component={Link} to="/">
-          Maison
+          Accueil
         </Button>
         <Button color="inherit" component={Link} to="/about">
-          Apropo
+          A propos
+        </Button>
+        <Button color="inherit" component={Link} to="/qcm">
+          Qcm
         </Button>
       </Toolbar>
     </AppBar>

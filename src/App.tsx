@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Container, CssBaseline, Box } from '@mui/material';
 import Navbar from './components/Navbar';
 import About from './components/About';
+import Qcm from './components/Qcm';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import PlayPauseControl from './components/PlayPauseControl';
 import VolumeControl from './components/VolumeControl';
@@ -24,6 +25,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Parallax />} />
             <Route path="/about" element={<About />} />
+            <Route path="/qcm" element={<Qcm />} />
           </Routes>
         </Box>
         <Logo />
