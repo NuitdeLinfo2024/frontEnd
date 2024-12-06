@@ -10,13 +10,13 @@ interface CaptchaProps {
 }
 
 const Captcha: React.FC<CaptchaProps> = ({ onComplete }) => {
-  const [stage, setStage] = useState(3);
+  const [stage, setStage] = useState(0);
 
   useEffect(() => {
     if (stage > 4) {
       const timeout = setTimeout(() => {
         onComplete(); // Call the onComplete function after 3 seconds
-      }, 3000);
+      }, 2000);
   
       return () => clearTimeout(timeout);
     }
