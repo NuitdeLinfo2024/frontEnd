@@ -8,8 +8,8 @@ interface Stage0ConfirmProps {
 const Stage0Confirm: React.FC<Stage0ConfirmProps> = ({ onPlay, onSkip }) => {
   return (
     <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Bienvenue au CAPTCHA</h1>
-      <p>Voulez-vous jouer au CAPTCHA ou le passer ?</p>
+      <h1>Bienvenue au CAPTCHA, le truc trop génial !</h1>
+      <p>Si vous êtes vraiment sûr de ne pas être un robot, vous pouvez passer le captcha. Dans le cas contraire, vérifiez que vous êtes bien un humain en le réalisant !</p>
       <div>
         <button
           onClick={onPlay}

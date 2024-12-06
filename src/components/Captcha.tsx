@@ -30,7 +30,7 @@ const Captcha: React.FC<CaptchaProps> = ({ onComplete }) => {
       {stage === 2 && <Stage2Interactive onComplete={() => setStage(3)} />}
       {stage === 3 && <Stage3Platformer onComplete={() => setStage(4)} />}
       {stage === 4 && <Stage4Password onComplete={() => setStage(5)} />}
-      {stage > 4 && <h1>CAPTCHA Completed! 🎉</h1>}
+      {stage > 4 && <h1>CAPTCHA Terminé ! 🎉</h1>}
     </div>
   );
 };

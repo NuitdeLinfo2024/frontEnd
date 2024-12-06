@@ -29,7 +29,7 @@ const Stage1Form: React.FC<Stage1FormProps> = ({ onComplete }) => {
 
   return (
     <div>
-      <h2>Stage 1 : Quel est selon vous l'image qui vous représente le plus</h2>
+      <h1>Niveau 1 : Quel est selon vous l'image qui vous représente le plus ?</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {images.map((image) => (
           <div
@@ -57,7 +57,7 @@ const Stage1Form: React.FC<Stage1FormProps> = ({ onComplete }) => {
         ))}
       </div>
       <button onClick={handleSubmit} style={{ marginTop: '20px', padding: '10px 20px' }}>
-        Confirm Selection
+        Confirmer le choix
       </button>
     </div>
   );

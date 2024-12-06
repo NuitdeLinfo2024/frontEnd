@@ -18,7 +18,7 @@ const App: React.FC = () => {
   if (!isCaptchaComplete) {
     return (
       <div style={{ textAlign: 'center', marginTop: '50px' }}>
-        <h1>CAPTCHA Intéractif 😄</h1>
+        <h1>CAPTCHA Interactif 😄</h1>
         <Captcha onComplete={() => setIsCaptchaComplete(true)} />
       </div>
     );
