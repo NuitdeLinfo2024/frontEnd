@@ -29,7 +29,7 @@ const Stage1Form: React.FC<Stage1FormProps> = ({ onComplete }) => {
 
   return (
     <div>
-      <h1>Niveau 1 : Quel est selon vous l'image qui vous représente le plus ?</h1>
+      <h1>Niveau 1 : Quel est selon vous l'image qui vous représente le moins ?</h1>
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {images.map((image) => (
           <div

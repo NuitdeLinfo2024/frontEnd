@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 interface Stage3PlatformerProps {
   onComplete: () => void;
-  goBackToStage2: () => void;
+  goBackToStage0: () => void;
 }
 
-const Stage3Platformer: React.FC<Stage3PlatformerProps> = ({ onComplete, goBackToStage2 }) => {
+const Stage3Platformer: React.FC<Stage3PlatformerProps> = ({ onComplete, goBackToStage0 }) => {
   const [timeLeft, setTimeLeft] = useState(20);
   const [playerPosition, setPlayerPosition] = useState(0);
   const [playerJumping, setPlayerJumping] = useState(false);
@@ -17,10 +17,10 @@ const Stage3Platformer: React.FC<Stage3PlatformerProps> = ({ onComplete, goBackT
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     } else if (timeLeft === 0 && !finished) {
-      alert("Le temps est écoulé ! Retour au Stage 2.");
-      goBackToStage2(); // Retour au Stage 2 lorsque le temps est écoulé
+      alert("Le temps est écoulé ! Retour au Niveau 0.");
+      goBackToStage0(); // Retour au Stage 0 lorsque le temps est écoulé
     }
-  }, [timeLeft, finished, goBackToStage2]);
+  }, [timeLeft, finished, goBackToStage0]);
 
   // Faire avancer automatiquement le joueur vers la droite en utilisant requestAnimationFrame
   useEffect(() => {
@@ -97,7 +97,7 @@ const Stage3Platformer: React.FC<Stage3PlatformerProps> = ({ onComplete, goBackT
     <div style={{ textAlign: 'center' }}>
       <h1>Niveau 3 : Défi de la plateforme</h1>
       <p>Temps restant : {timeLeft}s</p>
-      <div style={{ position: 'relative', margin: '20px auto', width: '400px', height: '100px', backgroundColor: 'lightgray', border: '2px solid black' }}>
+      <div style={{ position: 'relative', margin: '20px auto', width: '320px', height: '100px', backgroundColor: 'lightgray', border: '2px solid black' }}>
         {/* Sol */}
         <div style={{ position: 'absolute', bottom: '0', left: '0', width: '100%', height: '10px', backgroundColor: 'brown' }} />
 

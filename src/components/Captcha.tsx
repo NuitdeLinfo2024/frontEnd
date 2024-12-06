@@ -10,11 +10,15 @@ interface CaptchaProps {
 }
 
 const Captcha: React.FC<CaptchaProps> = ({ onComplete }) => {
-  const [stage, setStage] = useState(0);
+  const [stage, setStage] = useState(3);
 
   useEffect(() => {
     if (stage > 4) {
-      onComplete(); // Trigger the onComplete callback when all stages are completed
+      const timeout = setTimeout(() => {
+        onComplete(); // Call the onComplete function after 3 seconds
+      }, 3000);
+  
+      return () => clearTimeout(timeout);
     }
   }, [stage, onComplete]);
 
@@ -28,7 +32,8 @@ const Captcha: React.FC<CaptchaProps> = ({ onComplete }) => {
       )}
       {stage === 1 && <Stage1Form onComplete={() => setStage(2)} />}
       {stage === 2 && <Stage2Interactive onComplete={() => setStage(3)} />}
-      {stage === 3 && <Stage3Platformer onComplete={() => setStage(4)} />}
+      {stage === 3 && <Stage3Platformer onComplete={() => setStage(4)} goBackToStage0={function (): void { setStage(0);
+      } } />}
       {stage === 4 && <Stage4Password onComplete={() => setStage(5)} />}
       {stage > 4 && <h1>CAPTCHA Terminé ! 🎉</h1>}
     </div>
