@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import About from './components/About';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Parallax from './components/Parallax';
+import Logo from './components/Logo';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
           </Routes>
         </Box>
       </Container>
+      <Logo />
     </Router>
   );
 }
