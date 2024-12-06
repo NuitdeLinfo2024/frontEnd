@@ -185,12 +185,9 @@ const ThunderStorm: React.FC = () => {
 const Tornado: React.FC = () => {
 
     const { scrollY } = useScroll(); // Get the current scroll position
-    const maxScrollHeight = document.body.scrollHeight - window.innerHeight;
 
-    const [maxScroll, setMaxScroll] = useState(0);
     const [tornadoCrazy, setTornadoCrazy] = useState(0);
     const [tornadoCrazy2, setTornadoCrazy2] = useState(0);
-    const boatY = useTransform(scrollY, [600, maxScroll], ['50%', '-5%']);
 
     setInterval(() => {
         setTornadoCrazy((Math.floor(Math.random() * window.innerWidth) / 4) - scrollY.get() * 2);
@@ -264,7 +261,7 @@ const WeatherOverlay: React.FC = () => {
         const getWeather = async () => {
             try {
                 if(localStorage.getItem('useApi') === 'true') {
-                    const data = await fetchWeatherData(5.7539, 45.1846);
+                    const data = await fetchWeatherData();
                     setWeatherCondition(data?.weather[0]?.main || "Clear");
                 } else {
                     const randCondition = weatherTypesList[Math.floor(Math.random() * weatherTypesList.length)];
