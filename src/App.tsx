@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import About from './components/About';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Parallax from './components/Parallax';
+import Logo from './components/Logo';
+import './App.css';
 import WeatherController from './weatherApi/WeatherController';
 
 const App: React.FC = () => {
@@ -37,6 +39,7 @@ const App: React.FC = () => {
             <Route path="/weather" element={<WeatherController lat={35} lon={139} />} />
           </Routes>
         </Box>
+        <Logo />
       </Container>
     </Router>
   );
