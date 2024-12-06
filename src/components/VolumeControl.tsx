@@ -146,7 +146,7 @@ const VolumeControl: React.FC<VolumeControlProps> = ({ audioRef }) => {
             Selected Color: {selectedColor}
           </p>
           <p style={{ fontSize: '18px', fontWeight: 'bold' }}>
-            Volume: {volume.toFixed(2)}
+            Volume: {Math.round(volume * 100)}%
           </p>
         </Box>
       )}
